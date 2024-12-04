@@ -39,4 +39,13 @@ class UserController extends Controller
         }
         return redirect('/');
     }
+
+    public function adminAction()
+    {
+        if (auth()->user()->is_admin) {
+            return view('admin.dashboard');
+        } else {
+            return redirect()->route('home')->with('error', 'Unauthorized access.');
+        }
+    }
 }
