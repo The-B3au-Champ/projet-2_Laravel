@@ -101,7 +101,7 @@ nav a:hover, nav a.active, .book-card-detail a:hover{
 }
 
 .book-card-detail{
-    background-color: var(--third);
+    background-color: var(--t);
     display: flex;
     width:80%;
     flex-direction: column;

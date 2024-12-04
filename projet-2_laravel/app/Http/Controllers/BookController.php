@@ -61,8 +61,27 @@ class BookController extends Controller
     }
 
     
+    public function showEditBookForm(){
+        
+    }
 
-    public function editBook($id){
-        return "update du livre $id";    }
+    public function editBook($id, Request $request){
+    
+        $book = Book::find($id);
+
+        if ($book) {
+            $book->title = $request->input('title', $book->title);
+            $book->author = $request->input('author', $book->author);
+            $book->published_date = $request->input('published_date', $book->published_date);
+    
+            $book->save();
+            
+        } else {
+            echo "Erreur lors de la modification ";
+                }
+    
+        $books = Book::all();
+        return view('home', ['books' => $books]);
+    }
 
 }
