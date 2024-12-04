@@ -21,7 +21,8 @@ class UserController extends Controller
 
         auth()->login($user);
         return redirect('/');
-    }    
+    }   
+     
     public function logout(){
         auth()->logout();
         return redirect('/');

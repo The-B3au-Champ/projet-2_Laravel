@@ -16,11 +16,6 @@
             <button>Log out</button>
         </form>
 
-        <div>
-            <h2>Mes tâches</h2>
-            <p>Vous pouvez gérer vos tâches ici.</p>
-            <a href="/tasks">Voir mes tâches</a>
-        </div>
     @else
         <div>
         <h2>Enregistrer</h2>
@@ -33,7 +28,7 @@
         </form>
     </div>
     <div>
-        <h2>Connextion</h2>
+        <h2>Connection</h2>
         <form action="/login" method="POST">
             @csrf
             <input name="loginEmail" type="text" placeholder="Email">

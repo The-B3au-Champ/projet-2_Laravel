@@ -46,26 +46,23 @@
         </nav>
     </header>
 @endauth
+<h1>Messages</h1>
+@if(session('success'))
+    <p>{{ session('success') }}</p>
+@endif
+<ul>
+    @foreach($messages as $message)
+        <li>
+            <strong>{{ $message->nom }}</strong> ({{ $message->email }})<br>
+            <strong>Sujet:</strong> {{ $message->sujet }}<br>
+            <p>{{ $message->message }}</p>
+        </li>
 
+        {{-- ajouter une date string pour que ce soit seulement l'anée --}}
+    @endforeach
+</ul>
 
-    <h1 class="titre">Voici notre sélection de livres</h1>
-    <div id="add-book" onclick="window.location.href='/nouveau-livre'"><a>+</a></div>
-
-        @if($books->isEmpty())
-            <p>Aucun livre trouvés.</p>
-        @else
-        <div class='books-container'>  
-                @foreach($books as $book)
-                    <div class='book-card' onclick='window.location.href="/show-detail/{{$book->id}}"'>
-                        <p>{{ $book->title }}</p>
-                        <p>{{ $book->author }}</p>
-                        <p>{{ $book->description }}</p>
-                        <p>{{ $book->publication_date }}</p>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    </div>
+    </section>
     <footer>
         <p>© 2024 Charles Beauchamp et Étiene Gagnon</p>
     </footer>

@@ -48,24 +48,22 @@
 @endauth
 
 
-    <h1 class="titre">Voici notre sélection de livres</h1>
-    <div id="add-book" onclick="window.location.href='/nouveau-livre'"><a>+</a></div>
-
-        @if($books->isEmpty())
-            <p>Aucun livre trouvés.</p>
-        @else
-        <div class='books-container'>  
-                @foreach($books as $book)
-                    <div class='book-card' onclick='window.location.href="/show-detail/{{$book->id}}"'>
-                        <p>{{ $book->title }}</p>
-                        <p>{{ $book->author }}</p>
-                        <p>{{ $book->description }}</p>
-                        <p>{{ $book->publication_date }}</p>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-    </div>
+    <h1 class="titre">Détails du livre : {{ $book->title }}</h1>
+        <div class='book-card-detail'>
+            <p>Titre : {{ $book->title }}</p>
+            <p>Auteur : {{ $book->author }}</p>
+            <p>Résumé : {{ $book->description }}</p>
+            <p>Date de publication : {{ $book->publication_date }}</p>
+            <p>Prix : {{ $book->price }} $</p>
+            <br>
+            <button onclick="addToCart({{ $book->id }})" class="btn">Ajouter au panier</button>
+            <br>
+            <form action="/delete-book/{{ $book->id }}" method="POST" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce livre ?');">Supprimer</button>
+            </form>
+       </div>
     <footer>
         <p>© 2024 Charles Beauchamp et Étiene Gagnon</p>
     </footer>
