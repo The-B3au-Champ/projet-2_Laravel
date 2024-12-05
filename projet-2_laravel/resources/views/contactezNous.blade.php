@@ -1,28 +1,9 @@
-<?php 
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constacez-nous</title>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="{{asset('css/app.css') }}">
-    <script src="{{asset('js/script.js') }}" defer></script>
-</head>
-<body>
-    <header>
-        <nav class="nav-bar">
-            <ul>
-                <li><a class="active" href="/">Accueil</a></li>
-                <li><a href="nouveautes">Nouveautés</a></li>
-                <li><a href="contactez-nous">Contactez-nous</a></li>
-                <li><a href="messages">Mes messages</a></li>
-                <li><a href="recherche">Rechercher un livre</a></li>
-            </ul>
-        </nav>
-    </header>
+    @extends('layouts.app')
+
+    @section('title', 'Contactez-nous')
+
+    @section('content')
     <h1 class="titre">Contactez-nous</h1>
     <form class="form" method="post" action="{{ route('messages.store') }}" enctype="multipart/form-data">
         @csrf
@@ -41,9 +22,4 @@
         <button type="submit">Envoyer le message</button>
         <a class="center" href="accueil">Revenir en arrière</a>
     </form>
-
-    <footer>
-        <p>© 2024 Charles Beauchamp et Étiene Gagnon</p>
-    </footer>
-</body>
-</html>
+    @endsection
