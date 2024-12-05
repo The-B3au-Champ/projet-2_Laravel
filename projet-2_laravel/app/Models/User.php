@@ -23,7 +23,11 @@ class User extends Authenticatable
         'password',
         'role',
     ];
-
+    // Méthode pour vérifier si un utilisateur a un rôle spécifique
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

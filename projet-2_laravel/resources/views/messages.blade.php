@@ -53,8 +53,8 @@
 
     <section class="books-container">
         @section('content')
-    <h1 class="titre">Voici notre sélection de livres</h1>
-    <div id="add-book" onclick="window.location.href='nouveau-livre'"><a>+</a></div>
+        <h1 class="titre">Voici notre sélection de livres</h1>
+        <div id="add-book" onclick="window.location.href='nouveau-livre'"><a>+</a></div>
     <footer>
         <p>© 2024 Charles Beauchamp et Étiene Gagnon</p>
     </footer>

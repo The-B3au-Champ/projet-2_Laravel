@@ -25,10 +25,10 @@
     </header>
     <h1 class="titre">Ajouter un livre</h1>
     <form class="form" method="post" action="/nouveau-livre" enctype="multipart/form-data">
-       
+    @csrf
         <label for="titre">Titre:</label>
         <input type="text" id="titre" name="title" placeholder="Titre du livre" required><br>
-        @csrf
+        
         <label for="auteur">Auteur:</label>
         <input type="text" id="auteur" name="author" placeholder="Nom de l'auteur" required><br>
 

@@ -63,6 +63,8 @@
                 @method('DELETE')
                 <button type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce livre ?');">Supprimer</button>
             </form>
+            <br>
+            <button onclick='window.location.href="/edit-book/{{$book->id}}"' >Modifier le livre</button>
        </div>
     <footer>
         <p>© 2024 Charles Beauchamp et Étiene Gagnon</p>

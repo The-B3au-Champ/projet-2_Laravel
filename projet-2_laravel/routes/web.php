@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RechercheController;
 
 Route::get('/',[BookController::class, "getBooks"]);
 Route::get('/accueil',[BookController::class, "getBooks"]);
@@ -13,7 +14,7 @@ Route::post('/nouveau-livre',[BookController::class, "addBook"]);
 Route::get('/show-detail/{id}',[BookController::class, "showBookDetail"]);
 Route::delete('/delete-book/{id}',[BookController::class, "deleteBook"]);
 Route::get('/edit-book/{id}',[BookController::class, "showEditBookForm"]);
-Route::put('/edit-book/{id}',[BookController::class, "editBook"]);
+Route::put('/edit-book/{id}', [BookController::class, 'editBook']);
 
 Route::get('/login', function () {
     return view('login');
@@ -36,3 +37,15 @@ Route::patch('/messages/{id}/read', [MessageController::class, 'markAsRead'])->n
 Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
 
 Route::patch('/messages/{id}/read', [MessageController::class, 'markAsRead'])->name('messages.markAsRead');
+
+Route::get('/admin/action', [UserController::class, 'adminAction'])->name('admin.action');
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+});
+
+
+
+
+Route::get('/search-books', [RechercheController::class, 'searchBooks']);
+##Route::post('/search-books', [RechercheController::class, 'searchBooksResult']);

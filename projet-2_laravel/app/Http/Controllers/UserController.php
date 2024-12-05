@@ -42,10 +42,12 @@ class UserController extends Controller
 
     public function adminAction()
     {
-        if (auth()->user()->is_admin) {
+        // Vérifiez si l'utilisateur connecté est un administrateur
+        if (auth()->user() && auth()->user()->hasRole('administrator')) {
             return view('admin.dashboard');
         } else {
-            return redirect()->route('home')->with('error', 'Unauthorized access.');
+            return redirect('/')->with('error', 'Unauthorized access.');
         }
     }
+    
 }
